@@ -25,6 +25,5 @@ public class SpinAcceleratorCommand extends CommandBase {
     public void end(boolean interrupted) {
         req_subsystem.setAcceleratorMotorBP(0);
     }
-    
-     
+      
 }

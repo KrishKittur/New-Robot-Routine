@@ -24,5 +24,14 @@ public final class Constants {
         // Motors, Ports, and Channels
         public static int ACCELERATOR_MOTOR_ID = 21;
     }
+
+    // All constants having to do with the shooter go here
+    public static class Shooter {
+        // Motors, Ports, and Channels
+        public static int SHOOTER_MOTOR_1_ID = 22;
+        public static int SHOOTER_MOTOR_2_ID = 23;
+        public static int SHOOTER_ENCODER_CHANNEL_A = 1;
+        public static int SHOOTER_ENCODER_CHANNEL_B = 2;
+    }
 }
 /*----------------------------------------------------------------------------*/

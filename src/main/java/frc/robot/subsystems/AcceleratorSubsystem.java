@@ -12,12 +12,12 @@ public class AcceleratorSubsystem extends SubsystemBase {
 
     // Method to set the accelerator motor by percent
     public void setAcceleratorMotorBP(double percent) {
-        acceleratorMotor.set(percent);
+        acceleratorMotor.set(-1 * percent);
     }
 
     // Method to set the accelerator motor by voltage
     public void setAcceleratorMotorBV(double voltage) {
-        acceleratorMotor.set(voltage);
+        acceleratorMotor.set(-1 * voltage);
     }
 
 }
