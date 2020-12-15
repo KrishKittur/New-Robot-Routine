@@ -1,4 +1,4 @@
-package frc.robot.commands;
+package frc.robot.commands.spindexer;
 
 import static frc.robot.Constants.Spindexer.*;
 import frc.robot.subsystems.SpindexerSubsystem;

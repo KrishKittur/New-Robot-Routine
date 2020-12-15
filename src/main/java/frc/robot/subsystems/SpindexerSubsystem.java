@@ -20,8 +20,8 @@ public class SpindexerSubsystem extends SubsystemBase {
     }
 
     // Method to set the spindexer motor by percent
-    public void setSpindexerMotorBP(double speed) {
-        spindexerMotor.set(speed);
+    public void setSpindexerMotorBP(double percent) {
+        spindexerMotor.set(percent);
     }
 
     // Method to set the spindexer motor by voltage

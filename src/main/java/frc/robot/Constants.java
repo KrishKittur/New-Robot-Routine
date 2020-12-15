@@ -3,7 +3,7 @@ package frc.robot;
 
 import java.lang.Math;
 
-// Create the "wrapper" constants class
+// All constants go here
 public final class Constants {
 
     // All constants having to do with the spindexer go here
@@ -17,6 +17,12 @@ public final class Constants {
         public static int SPINDEXER_MOTOR_KP = 1;
         public static int SPINDEXER_MOTOR_KI = 0;
         public static int SPINDEXER_MOTOR_KD = 0;
+    }
+
+    // All constants having to do with the accelerator go here
+    public static class Accelerator {
+        // Motors, Ports, and Channels
+        public static int ACCELERATOR_MOTOR_ID = 21;
     }
 }
 /*----------------------------------------------------------------------------*/

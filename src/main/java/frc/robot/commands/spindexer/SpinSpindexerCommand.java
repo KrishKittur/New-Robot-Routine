@@ -1,4 +1,4 @@
-package frc.robot.commands;
+package frc.robot.commands.spindexer;
 
 import frc.robot.subsystems.SpindexerSubsystem;
 import edu.wpi.first.wpilibj.util.Units;
