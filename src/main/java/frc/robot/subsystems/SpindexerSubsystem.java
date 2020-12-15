@@ -19,9 +19,14 @@ public class SpindexerSubsystem extends SubsystemBase {
         spindexerEncoder.setDistancePerRotation(SPINDEXER_ENCODER_DPR);
     }
 
-    // Method to set the spindexer motor
-    public void setSpindexerMotor(double speed) {
+    // Method to set the spindexer motor by percent
+    public void setSpindexerMotorBP(double speed) {
         spindexerMotor.set(speed);
+    }
+
+    // Method to set the spindexer motor by voltage
+    public void setSpindexerMotorBV(double voltage) {
+        spindexerMotor.setVoltage(voltage);
     }
 
     // Method to get the encoders readings

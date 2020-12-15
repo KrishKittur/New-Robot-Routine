@@ -19,13 +19,13 @@ public class SpinSpindexerCommand extends CommandBase {
     @Override
     public void initialize() {
         startDistance = req_subsystem.readSpindexerEncoder();
-        req_subsystem.setSpindexerMotor(0.6);
+        req_subsystem.setSpindexerMotorBP(0.6);
     }
 
     // When the command finishes turn the spindexer motor off
     @Override
     public void end(boolean interrupted) {
-        req_subsystem.setSpindexerMotor(0);
+        req_subsystem.setSpindexerMotorBP(0);
     }
 
     // Returns true when the spindexer has completed a full rotation
