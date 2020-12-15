@@ -6,6 +6,12 @@ import java.lang.Math;
 // All constants go here
 public final class Constants {
 
+    // All constants having to do with controllers go here
+    public static class Controller {
+        // Channels
+        public static int CONTROLLER_CHANNEL = 0;
+    }
+
     // All constants having to do with the spindexer go here
     public static class Spindexer {
         // Motors, Ports, and Channels

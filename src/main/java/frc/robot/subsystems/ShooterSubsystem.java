@@ -27,7 +27,7 @@ public class ShooterSubsystem extends SubsystemBase {
 
    // Method to spin the shooter using voltages
    public void spinShooterBV(double shooterVoltage1, double shooterVoltage2) {
-        shooterMotor1.setVoltage(shooterVoltage1);
+        shooterMotor1.setVoltage(-1 * shooterVoltage1);
         shooterMotor2.setVoltage(shooterVoltage2);
    }
 
