@@ -11,7 +11,7 @@ public class TurnSpindexerCommand extends CommandBase {
     // Initialize the subsystems, controllers, and controller values
     SpindexerSubsystem req_subsystem;
     double spindexerSetpoint;
-    PIDController spindexerPidController = new PIDController(SPINDEXER_MOTOR_KP, SPINDEXER_MOTOR_KI, SPINDEXER_MOTOR_KD);
+    PIDController spindexerPidController = new PIDController(SPINDEXER_ENCODER_KP, SPINDEXER_ENCODER_KI, SPINDEXER_ENCODER_KD);
 
     public TurnSpindexerCommand(SpindexerSubsystem subsystem) {
         // Establish the commands requirements and set the setters

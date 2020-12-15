@@ -31,4 +31,9 @@ public class ShooterSubsystem extends SubsystemBase {
         shooterMotor2.setVoltage(shooterVoltage2);
    }
 
+   // Method to read the encoders values
+   public double readShooterEncoder() {
+        return shooterEncoder.getRate();
+   }
+
 }
