@@ -46,10 +46,12 @@ public class TurnSpindexerCommand extends CommandBase {
 
     // Method to calculate the nearest "valid" angle
     private double nearestAngle(double currentAngle) {
-        double ratio = (currentAngle % Units.degreesToRadians(360/5)) / Units.degreesToRadians(360/5);
-        double nextMultipleOfPos = Math.ceil(ratio);
-        double smallTargetAngle = nextMultipleOfPos * Units.degreesToRadians(360/5);
-        double targetAngle = (currentAngle - (currentAngle % Units.degreesToRadians(360/5))) + smallTargetAngle;
+        double fifthPosition = Units.degreesToRadians(360/5);
+        double angleRemainder = currentAngle % fifthPosition;
+        double ratio = angleRemainder / fifthPosition;
+        double nextMultipleOfPos = Math.round(ratio);
+        double smallTargetAngle = nextMultipleOfPos * fifthPosition;
+        double targetAngle = (currentAngle - angleRemainder) + smallTargetAngle;
         return targetAngle;
     }
 
