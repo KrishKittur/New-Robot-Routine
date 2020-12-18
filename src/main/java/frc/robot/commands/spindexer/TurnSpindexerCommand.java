@@ -5,6 +5,7 @@ import frc.robot.subsystems.SpindexerSubsystem;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.util.Units;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpiutil.math.MathUtil;
 
 public class TurnSpindexerCommand extends CommandBase {
     
@@ -17,19 +18,19 @@ public class TurnSpindexerCommand extends CommandBase {
         // Establish the commands requirements and set the setters
         req_subsystem = subsystem;
         addRequirements(subsystem);
-        spindexerPidController.setTolerance(4, 1);
+        spindexerPidController.setTolerance(0.05, 0.5);
     }
 
     // In the initialize method, set the setpoint to the nearest "valid" angle
     @Override
     public void initialize() {
-        spindexerSetpoint = nearestAngle(req_subsystem.readSpindexerEncoder());
+        spindexerSetpoint = nearestAngle(req_subsystem.readSpindexerEncoder()) - 0.85;
     }
 
     // In the execute method set the spindexer motors according to the PID controllers calculations 
     @Override
     public void execute() {
-        req_subsystem.setSpindexerMotorBV(spindexerPidController.calculate(req_subsystem.readSpindexerEncoder(), spindexerSetpoint));
+        req_subsystem.setSpindexerMotorBV(-1 * MathUtil.clamp(spindexerPidController.calculate(req_subsystem.readSpindexerEncoder(), spindexerSetpoint), -10, 10));
     }
 
     // In the end method set the spindexer motor to 0 
@@ -47,13 +48,14 @@ public class TurnSpindexerCommand extends CommandBase {
     // Method to calculate the nearest "valid" angle
     private double nearestAngle(double currentAngle) {
         double fifthPosition = Units.degreesToRadians(360/5);
-        double angleRemainder = currentAngle % fifthPosition;
+        double angleRemainder = Math.abs(currentAngle % fifthPosition);
         double ratio = angleRemainder / fifthPosition;
-        double nextMultipleOfPos = Math.round(ratio);
+        double nextMultipleOfPos = Math.floor(ratio);
         double smallTargetAngle = nextMultipleOfPos * fifthPosition;
         double targetAngle = (currentAngle - angleRemainder) + smallTargetAngle;
         return targetAngle;
     }
+
 
 
 }

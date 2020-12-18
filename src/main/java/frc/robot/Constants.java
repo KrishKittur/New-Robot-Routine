@@ -16,11 +16,11 @@ public final class Constants {
     public static class Spindexer {
         // Motors, Ports, and Channels
         public static int SPINDEXER_MOTOR_ID = 20;
-        public static int SPINDEXER_ENCODER_PORT = 0;
+        public static int SPINDEXER_ENCODER_PORT = 2;
         public static double SPINDEXER_ENCODER_DPR = Math.PI * 2/1;
 
         // For Tuning
-        public static int SPINDEXER_ENCODER_KP = 1;
+        public static double SPINDEXER_ENCODER_KP = 6;
         public static int SPINDEXER_ENCODER_KI = 0;
         public static int SPINDEXER_ENCODER_KD = 0;
     }
@@ -36,8 +36,8 @@ public final class Constants {
         // Motors, Ports, and Channels
         public static int SHOOTER_MOTOR_1_ID = 22;
         public static int SHOOTER_MOTOR_2_ID = 23;
-        public static int SHOOTER_ENCODER_CHANNEL_A = 1;
-        public static int SHOOTER_ENCODER_CHANNEL_B = 2;
+        public static int SHOOTER_ENCODER_CHANNEL_A = 0;
+        public static int SHOOTER_ENCODER_CHANNEL_B = 1;
 
         // For Tuning
         public static int SHOOTER_ENCODER_KP = 1;
