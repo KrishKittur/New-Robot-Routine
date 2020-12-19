@@ -23,7 +23,7 @@ public class TurnSpindexerCommand extends CommandBase {
     // In the initialize method, set the setpoint to the nearest "valid" angle
     @Override
     public void initialize() {
-        spindexerSetpoint = nearestAngle(req_subsystem.readSpindexerEncoder()) - SPINDEXER_OFFSET_POSITION;
+        spindexerSetpoint = nearestAngle(req_subsystem.readSpindexerEncoder());
     }
 
     // In the execute method set the spindexer motors according to the PID controllers calculations 
@@ -52,7 +52,7 @@ public class TurnSpindexerCommand extends CommandBase {
         double multipleOfPos = Math.floor(ratio);
         double addNum = multipleOfPos * fifthPos;
         double targetAngle = (currentAngle - remainder) + addNum;
-        return targetAngle;
+        return targetAngle - SPINDEXER_OFFSET_POSITION;
     }
     
 
