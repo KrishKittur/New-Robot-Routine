@@ -23,7 +23,7 @@ public final class Constants {
         public static int SPINDEXER_ENCODER_KD = 0;
 
         // Other important spindexer constants
-        public static double SPINDEXER_OFFSET_POSITION = 0; // Set this equal to the offset position of the spindexer (this number must be positive)
+        public static double SPINDEXER_OFFSET_POSITION = 49; 
     }
 
     // All constants having to do with the accelerator go here
