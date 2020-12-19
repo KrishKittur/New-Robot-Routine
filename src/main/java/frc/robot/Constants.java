@@ -18,9 +18,9 @@ public final class Constants {
         public static double SPINDEXER_ENCODER_DPR = 360/1;
 
         // For Tuning
-        public static double SPINDEXER_ENCODER_KP = 6;
-        public static int SPINDEXER_ENCODER_KI = 0;
-        public static int SPINDEXER_ENCODER_KD = 0;
+        public static double SPINDEXER_ENCODER_KP = 0.1;
+        public static double SPINDEXER_ENCODER_KI = 0.0;
+        public static double SPINDEXER_ENCODER_KD = 0.001;
 
         // Other important spindexer constants
         public static double SPINDEXER_OFFSET_POSITION = 49; 

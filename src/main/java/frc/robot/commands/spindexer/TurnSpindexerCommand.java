@@ -17,7 +17,7 @@ public class TurnSpindexerCommand extends CommandBase {
         // Establish the commands requirements and set the setters
         req_subsystem = subsystem;
         addRequirements(subsystem);
-        spindexerPidController.setTolerance(0.05, 0.5); // For Tuning
+        spindexerPidController.setTolerance(7, 1); // For Tuning
     }
 
     // In the initialize method, set the setpoint to the nearest "valid" angle
