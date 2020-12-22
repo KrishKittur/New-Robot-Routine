@@ -16,7 +16,7 @@ public class ShooterSubsystem extends SubsystemBase {
 
    public ShooterSubsystem() {
        // Set the setters 
-       shooterEncoder.setDistancePerPulse(Math.PI * 2/8192);
+       shooterEncoder.setDistancePerPulse(Math.PI * 2/8192.0);
    }
 
    // Method to spin the shooter using percent
