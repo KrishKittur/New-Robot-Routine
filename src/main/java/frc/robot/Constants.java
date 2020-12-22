@@ -44,8 +44,6 @@ public final class Constants {
         public static int SHOOTER_ENCODER_KP = 1;
         public static int SHOOTER_ENCODER_KI = 0;
         public static int SHOOTER_ENCODER_KD = 0;
-        public static int SHOOTER_ENCODER_KS = 0;
-        public static int SHOOTER_ENCODER_KV = 0;
     }
 }
 /*----------------------------------------------------------------------------*/

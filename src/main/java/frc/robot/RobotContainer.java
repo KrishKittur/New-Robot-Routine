@@ -36,11 +36,17 @@ public class RobotContainer {
     // If the "A" button is pressed then run the routine
     new JoystickButton(controller, Button.kA.value).whenPressed(
 
-      new ParallelDeadlineGroup(
-          new TurnSpindexerCommand(spindexer_subsystem),
-          new SpinAcceleratorCommand(accelerator_subsystem, -0.2)
+      new SequentialCommandGroup(
+        new ParallelDeadlineGroup(
+            new TurnSpindexerCommand(spindexer_subsystem),
+            new SpinAcceleratorCommand(accelerator_subsystem, -0.2),
+            new WaitCommand(0.2)
+        ),
+        new ParallelDeadlineGroup(
+            new StartShooterCommand(shooter_subsystem), 
+            new StartAcceleratorCommand(accelerator_subsystem, 1)
+        )
       )
-
     );
   }
 
