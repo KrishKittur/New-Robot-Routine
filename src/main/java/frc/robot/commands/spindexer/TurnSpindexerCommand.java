@@ -8,7 +8,7 @@ import edu.wpi.first.wpiutil.math.MathUtil;
 
 public class TurnSpindexerCommand extends CommandBase {
     
-    // Initialize the subsystems, controllers, and controller values
+    // Initialize the subsystems, controllers, and the controllers values
     SpindexerSubsystem req_subsystem;
     double spindexerSetpoint;
     PIDController spindexerPidController = new PIDController(SPINDEXER_ENCODER_KP, SPINDEXER_ENCODER_KI, SPINDEXER_ENCODER_KD);
