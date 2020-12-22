@@ -1,8 +1,6 @@
 /*----------------------------------------------------------------------------*/
 package frc.robot;
 
-import java.lang.Math;
-
 // All constants go here
 public final class Constants {
 
@@ -17,12 +15,15 @@ public final class Constants {
         // Motors, Ports, and Channels
         public static int SPINDEXER_MOTOR_ID = 20;
         public static int SPINDEXER_ENCODER_PORT = 2;
-        public static double SPINDEXER_ENCODER_DPR = Math.PI * 2/1;
+        public static double SPINDEXER_ENCODER_DPR = 360/1;
 
         // For Tuning
-        public static double SPINDEXER_ENCODER_KP = 6;
-        public static int SPINDEXER_ENCODER_KI = 0;
-        public static int SPINDEXER_ENCODER_KD = 0;
+        public static double SPINDEXER_ENCODER_KP = 0.1;
+        public static double SPINDEXER_ENCODER_KI = 0.0;
+        public static double SPINDEXER_ENCODER_KD = 0.001;
+
+        // Other important spindexer constants
+        public static double SPINDEXER_OFFSET_POSITION = 49; 
     }
 
     // All constants having to do with the accelerator go here

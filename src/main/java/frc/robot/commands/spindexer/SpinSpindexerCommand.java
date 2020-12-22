@@ -1,7 +1,6 @@
 package frc.robot.commands.spindexer;
 
 import frc.robot.subsystems.SpindexerSubsystem;
-import edu.wpi.first.wpilibj.util.Units;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class SpinSpindexerCommand extends CommandBase {
@@ -31,7 +30,7 @@ public class SpinSpindexerCommand extends CommandBase {
     // Returns true when the spindexer has completed a full rotation
     @Override
     public boolean isFinished() {
-        return req_subsystem.readSpindexerEncoder() > startDistance + Units.degreesToRadians(360);
+        return req_subsystem.readSpindexerEncoder() > startDistance - 360;
     }
      
 }
