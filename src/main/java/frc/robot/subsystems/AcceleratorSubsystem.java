@@ -17,7 +17,7 @@ public class AcceleratorSubsystem extends SubsystemBase {
 
     // Method to set the accelerator motor by voltage
     public void setAcceleratorMotorBV(double voltage) {
-        acceleratorMotor.set(-1 * voltage);
+        acceleratorMotor.setVoltage(-1 * voltage);
     }
 
 }

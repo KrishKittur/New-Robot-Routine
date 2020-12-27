@@ -12,11 +12,16 @@ public class ShooterSubsystem extends SubsystemBase {
    // Instantiate the hardware
    private final CANSparkMax shooterMotor1 = new CANSparkMax(SHOOTER_MOTOR_1_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
    private final CANSparkMax shooterMotor2 = new CANSparkMax(SHOOTER_MOTOR_2_ID, CANSparkMaxLowLevel.MotorType.kBrushless);
-   private final Encoder shooterEncoder = new Encoder(SHOOTER_ENCODER_CHANNEL_A, SHOOTER_ENCODER_CHANNEL_B);
+   private final Encoder shooterEncoder = new Encoder(SHOOTER_ENCODER_CHANNEL_B, SHOOTER_ENCODER_CHANNEL_A);
 
    public ShooterSubsystem() {
        // Set the setters 
-       shooterEncoder.setDistancePerPulse(Math.PI * 2/8192.0);
+       shooterEncoder.setDistancePerPulse(Math.PI * 2/8192.0  * 4);
+       shooterEncoder.setSamplesToAverage(100);
+
+       // Set the current limits
+       shooterMotor1.setSmartCurrentLimit(40);
+       shooterMotor2.setSmartCurrentLimit(40);
    }
 
    // Method to spin the shooter using percent

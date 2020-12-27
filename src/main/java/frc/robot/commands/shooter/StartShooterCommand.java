@@ -10,20 +10,22 @@ import static frc.robot.Constants.Shooter.*;
 import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.util.Units;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpiutil.math.MathUtil;
 
 public class StartShooterCommand extends CommandBase {
     
     ShooterSubsystem req_subsystem;
-    double setPoint = 418.879;
+    double setPoint = Units.rotationsPerMinuteToRadiansPerSecond(4000);
     PIDController shooterPIDController = new PIDController(SHOOTER_ENCODER_KP, SHOOTER_ENCODER_KD, SHOOTER_ENCODER_KD);
-    SimpleMotorFeedforward shooterFFController = new SimpleMotorFeedforward(SHOOTER_ENCODER_KS, SHOOTER_ENCODER_KV);
+    SimpleMotorFeedforward shooterFFController = new SimpleMotorFeedforward(SHOOTER_ENCODER_KS, SHOOTER_ENCODER_KV, SHOOTER_ENCODER_KA);
 
     public StartShooterCommand(ShooterSubsystem subsystem) {
         req_subsystem = subsystem;
         addRequirements(subsystem);
-        shooterPIDController.setTolerance(10, 2);
+        shooterPIDController.setTolerance(Units.rotationsPerMinuteToRadiansPerSecond(100));
     }
 
     // In the execute method set the shooters motors according to the pid controllers calculations
@@ -40,4 +42,5 @@ public class StartShooterCommand extends CommandBase {
     public boolean isFinished() {
         return shooterPIDController.atSetpoint();
     }
+
 }

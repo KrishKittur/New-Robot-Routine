@@ -14,8 +14,8 @@ public class SpindexerSubsystem extends SubsystemBase {
 
     public SpindexerSubsystem() {
         // Set the setters
-        spindexerMotor.setSmartCurrentLimit(14);
-        spindexerMotor.setSecondaryCurrentLimit(16);
+        spindexerMotor.setSmartCurrentLimit(10);
+        spindexerMotor.setSecondaryCurrentLimit(12);
         spindexerEncoder.setDistancePerRotation(SPINDEXER_ENCODER_DPR);
     }
 

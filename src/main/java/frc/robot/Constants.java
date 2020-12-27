@@ -41,11 +41,12 @@ public final class Constants {
         public static int SHOOTER_ENCODER_CHANNEL_B = 1;
 
         // For Tuning
-        public static int SHOOTER_ENCODER_KP = 1;
-        public static int SHOOTER_ENCODER_KI = 0;
-        public static int SHOOTER_ENCODER_KD = 0;
-        public static int SHOOTER_ENCODER_KS = 0;
-        public static int SHOOTER_ENCODER_KV = 0;
+        public static double SHOOTER_ENCODER_KP = 0.1;
+        public static double SHOOTER_ENCODER_KI = 0;
+        public static double SHOOTER_ENCODER_KD = 0.0001;
+        public static double SHOOTER_ENCODER_KS = 0.2;
+        public static double SHOOTER_ENCODER_KV = 0.025;
+        public static double SHOOTER_ENCODER_KA = 0.0037;
     }
 }
 /*----------------------------------------------------------------------------*/
