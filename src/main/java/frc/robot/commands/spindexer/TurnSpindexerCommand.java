@@ -54,8 +54,5 @@ public class TurnSpindexerCommand extends CommandBase {
         double targetAngle = (currentAngle - remainder) + addNum;
         return targetAngle - SPINDEXER_OFFSET_POSITION;
     }
-    
-
-
 
 }

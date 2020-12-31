@@ -15,7 +15,6 @@ public final class Constants {
         // Motors, Ports, and Channels
         public static int SPINDEXER_MOTOR_ID = 20;
         public static int SPINDEXER_ENCODER_PORT = 2;
-        public static double SPINDEXER_ENCODER_DPR = 360/1;
 
         // For Tuning
         public static double SPINDEXER_ENCODER_KP = 0.1;
@@ -23,7 +22,8 @@ public final class Constants {
         public static double SPINDEXER_ENCODER_KD = 0.001;
 
         // Other important spindexer constants
-        public static double SPINDEXER_OFFSET_POSITION = 10; 
+        public static double SPINDEXER_OFFSET_POSITION = 10;
+        public static double SPINDEXER_ENCODER_DPR = 360/1; 
     }
 
     // All constants having to do with the accelerator go here
@@ -47,6 +47,23 @@ public final class Constants {
         public static double SHOOTER_ENCODER_KS = 0.2;
         public static double SHOOTER_ENCODER_KV = 0.025;
         public static double SHOOTER_ENCODER_KA = 0.0037;
+    }
+
+    // All constants having to do with the hood go here
+    public static class Hood {
+        // Motors, Ports, and Channels
+        public static int HOOD_MOTOR_ID = 24;
+        public static int HOOD_ENCODER_ID = 3;
+
+        // For tuning
+        public static double HOOD_ENCODER_KP = 0;
+        public static double HOOD_ENCODER_KI = 0;
+        public static double HOOD_ENCODER_KD = 0;
+
+        // Other important hood constants
+        public static int HOOD_ENCODER_DPR = 24/1;
+        public static double HOOD_ENCODER_OFFSET = 2.78;
+
     }
 }
 /*----------------------------------------------------------------------------*/
