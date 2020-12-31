@@ -23,7 +23,7 @@ public final class Constants {
         public static double SPINDEXER_ENCODER_KD = 0.001;
 
         // Other important spindexer constants
-        public static double SPINDEXER_OFFSET_POSITION = 49; 
+        public static double SPINDEXER_OFFSET_POSITION = 10; 
     }
 
     // All constants having to do with the accelerator go here

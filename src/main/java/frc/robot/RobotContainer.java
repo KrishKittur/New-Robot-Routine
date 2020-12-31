@@ -40,19 +40,19 @@ public class RobotContainer {
         new ParallelDeadlineGroup(
             new TurnSpindexerCommand(spindexer_subsystem),
             new SpinAcceleratorCommand(accelerator_subsystem, -0.2)
-        ),
-        new ParallelDeadlineGroup(
-          new StartShooterCommand(shooter_subsystem), 
-          new StartAcceleratorCommand(accelerator_subsystem, 1)
-        ),
-        new ParallelDeadlineGroup(
-          new SequentialCommandGroup(
-            new SpinSpindexerCommand(spindexer_subsystem),
-            new WaitCommand(0.2)
-          ),
-          new RunEndShooterCommand(shooter_subsystem),
-          new RunEndAcceleratorCommand(accelerator_subsystem)
         )
+        // new ParallelDeadlineGroup(
+        //   new StartShooterCommand(shooter_subsystem), 
+        //   new StartAcceleratorCommand(accelerator_subsystem, 1)
+        // ),
+        // new ParallelDeadlineGroup(
+        //   new SequentialCommandGroup(
+        //     new SpinSpindexerCommand(spindexer_subsystem),
+        //     new WaitCommand(0.2)
+        //   ),
+        //   new RunEndShooterCommand(shooter_subsystem),
+        //   new RunEndAcceleratorCommand(accelerator_subsystem)
+        // )
       )
 
     );
