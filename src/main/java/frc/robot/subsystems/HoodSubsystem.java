@@ -19,7 +19,6 @@ public class HoodSubsystem extends SubsystemBase {
         // Set the setters
         hoodEncoder.setDistancePerRotation(HOOD_ENCODER_DPR);
         hoodMotor.setSmartCurrentLimit(5);
-
         setDefaultCommand(new RunCommand(() -> setHoodMotor(0), this));
     }
 
@@ -30,7 +29,9 @@ public class HoodSubsystem extends SubsystemBase {
 
     // Method to move the hood
     public void setHoodMotor(double voltage) {
-        hoodMotor.setVoltage(-voltage);
+        if ((readHoodEncoder() >= 60.0 && voltage < 0.0) || (readHoodEncoder() <= 2.0 && voltage > 0.0) || (2.0 < readHoodEncoder() && readHoodEncoder() < 60.0)) {
+            hoodMotor.setVoltage(-voltage);
+        }
     }
 
     // In the periodic method, print out the value of the hood encoder

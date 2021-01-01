@@ -38,7 +38,6 @@ public class RobotContainer {
   private void configureButtonBindings() {
     // If the "A" button is pressed then run the routine
     new JoystickButton(controller, Button.kA.value).whenPressed(
-
       new SequentialCommandGroup(
         new ParallelDeadlineGroup(
             new TurnSpindexerCommand(spindexer_subsystem),
@@ -57,7 +56,6 @@ public class RobotContainer {
           new RunEndAcceleratorCommand(accelerator_subsystem)
         )
       )
-
     );
 
     // If the B button is pressed then move the hood forward
