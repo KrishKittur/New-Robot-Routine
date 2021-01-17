@@ -1,6 +1,8 @@
 /*----------------------------------------------------------------------------*/
 package frc.robot;
 
+import edu.wpi.first.wpilibj.util.Units;
+
 // All constants go here
 public final class Constants {
 
@@ -47,6 +49,9 @@ public final class Constants {
         public static double SHOOTER_ENCODER_KS = 0.2;
         public static double SHOOTER_ENCODER_KV = 0.025;
         public static double SHOOTER_ENCODER_KA = 0.0037;
+
+        // Other important shooter constants
+        public static double SHOOTER_ENCODER_DPR = 1.0/2048.0;
     }
 
     // All constants having to do with the hood go here
@@ -62,8 +67,32 @@ public final class Constants {
 
         // Other important hood constants
         public static int HOOD_ENCODER_DPR = 24/1;
-        public static double HOOD_ENCODER_OFFSET = 2.78;
 
+    }
+
+    // All constants having to do with the turret go here
+    public static class Turret {
+        // Motors, Ports, and Channels
+        public static int TURRET_MOTOR_ID = 25;
+        public static int TURRET_ENCODER_ID = 4;
+
+        // For tuning
+        public static double TURRET_ENCODER_KP = 0.1;
+        public static double TURRET_ENCODER_KI = 0.0;
+        public static double TURRET_ENCODER_KD = 0.0001;
+
+        // Other important turret constants
+        public static double TURRET_ENCODER_DPR = 360.0/1.0;
+        public static double TURRET_ENCODER_OFFSET = 131.0;
+
+    }
+
+    // All constants having to do with vision go here
+    public static class Vision {
+        // Motors, Ports, and Channels
+        public static double CAMERA_HEIGHT = 1.2065;
+        public static double TARGET_HEIGHT = 2.4892;
+        public static double CAMERA_TILT = Units.degreesToRadians(23.0);
     }
 }
 /*----------------------------------------------------------------------------*/

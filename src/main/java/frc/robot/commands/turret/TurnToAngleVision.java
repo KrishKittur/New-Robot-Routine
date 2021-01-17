@@ -1,31 +1,36 @@
 package frc.robot.commands.turret;
 
+import static frc.robot.Constants.Hood.*;
 import edu.wpi.first.wpilibj.MedianFilter;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpiutil.math.MathUtil;
 import frc.robot.subsystems.TurretSubsystem;
+import frc.robot.subsystems.VisionSubsystem;
 
 public class TurnToAngleVision extends CommandBase {
     
     // Initialize the subsystems, controllers, and the controllers values
-    PIDController turretController = new PIDController(0.1, 0, 0.0001);
+    PIDController turretController = new PIDController(HOOD_ENCODER_KP, HOOD_ENCODER_KI, HOOD_ENCODER_KD);
     TurretSubsystem req_subsystem;
+    VisionSubsystem vision_subsystem;
     double turretSetpoint;
     MedianFilter filter = new MedianFilter(7);
 
-    public TurnToAngleVision(TurretSubsystem subsystem) {
+    public TurnToAngleVision(TurretSubsystem subsystem, VisionSubsystem vision_subsystem) {
         // Establish the commands requirements and set the setters
         req_subsystem = subsystem;
         addRequirements(subsystem);
         turretController.setTolerance(5, 2);
+
+        this.vision_subsystem = vision_subsystem;
     }
 
     // In the execute method set the setpoint and turret motor based on the controllers readings/vision readings
     @Override
     public void execute() {
 
-        double desiredPosition = req_subsystem.readTurretEncoder() + req_subsystem.getTurretYaw();
+        double desiredPosition = req_subsystem.readTurretEncoder() + vision_subsystem.getYaw();
         double avgHeading = filter.calculate(desiredPosition);
 
         turretSetpoint = calcWhereToTurn(avgHeading, req_subsystem.readTurretEncoder());

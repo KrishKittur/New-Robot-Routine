@@ -21,6 +21,7 @@ import frc.robot.subsystems.HoodSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SpindexerSubsystem;
 import frc.robot.subsystems.TurretSubsystem;
+import frc.robot.subsystems.VisionSubsystem;
 
 public class RobotContainer {
 
@@ -29,6 +30,7 @@ public class RobotContainer {
   public final SpindexerSubsystem spindexer_subsystem = new SpindexerSubsystem();
   private final AcceleratorSubsystem accelerator_subsystem = new AcceleratorSubsystem();
   private final HoodSubsystem hood_subsystem = new HoodSubsystem();
+  private final VisionSubsystem vision_subsystem = new VisionSubsystem();
   private final TurretSubsystem turret_subsystem = new TurretSubsystem();
   private final XboxController controller = new XboxController(CONTROLLER_CHANNEL);
 
@@ -60,7 +62,7 @@ public class RobotContainer {
             new RunEndAcceleratorCommand(accelerator_subsystem)
           )
         ),
-        new TurnToAngleVision(turret_subsystem)
+        new TurnToAngleVision(turret_subsystem, vision_subsystem)
       )
     );
 

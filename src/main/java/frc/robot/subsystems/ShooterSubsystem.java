@@ -16,7 +16,7 @@ public class ShooterSubsystem extends SubsystemBase {
 
    public ShooterSubsystem() {
        // Set the setters 
-       shooterEncoder.setDistancePerPulse(Math.PI * 2/8192.0  * 4);
+       shooterEncoder.setDistancePerPulse(SHOOTER_ENCODER_DPR);
        shooterEncoder.setSamplesToAverage(100);
    }
 
