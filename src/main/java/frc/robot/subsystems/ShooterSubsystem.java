@@ -34,6 +34,6 @@ public class ShooterSubsystem extends SubsystemBase {
 
    // Method to read the encoders values
    public double readShooterEncoder() {
-        return shooterEncoder.getRate();
+        return shooterEncoder.getRate() * 60;
    }
 }

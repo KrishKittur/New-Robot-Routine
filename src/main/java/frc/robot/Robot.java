@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.hood.HoodHomingRoutine;
 
 
 public class Robot extends TimedRobot {
@@ -13,6 +14,9 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_robotContainer = new RobotContainer();
+    CommandScheduler.getInstance().schedule(
+      new HoodHomingRoutine(m_robotContainer.hood_subsystem)
+    );
   }
 
   @Override

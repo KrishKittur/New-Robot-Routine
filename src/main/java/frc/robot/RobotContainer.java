@@ -4,6 +4,7 @@ import static frc.robot.Constants.Controller.*;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
@@ -11,6 +12,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.accelerator.RunEndAcceleratorCommand;
 import frc.robot.commands.accelerator.SpinAcceleratorCommand;
 import frc.robot.commands.accelerator.StartAcceleratorCommand;
+import frc.robot.commands.hood.HoodToVisionAngleCommand;
 import frc.robot.commands.shooter.RunEndShooterCommand;
 import frc.robot.commands.shooter.StartShooterCommand;
 import frc.robot.commands.spindexer.SpinSpindexerCommand;
@@ -29,7 +31,7 @@ public class RobotContainer {
   private final ShooterSubsystem shooter_subsystem = new ShooterSubsystem();
   public final SpindexerSubsystem spindexer_subsystem = new SpindexerSubsystem();
   private final AcceleratorSubsystem accelerator_subsystem = new AcceleratorSubsystem();
-  private final HoodSubsystem hood_subsystem = new HoodSubsystem();
+  public final HoodSubsystem hood_subsystem = new HoodSubsystem();
   private final VisionSubsystem vision_subsystem = new VisionSubsystem();
   private final TurretSubsystem turret_subsystem = new TurretSubsystem();
   private final XboxController controller = new XboxController(CONTROLLER_CHANNEL);
@@ -50,7 +52,7 @@ public class RobotContainer {
               new SpinAcceleratorCommand(accelerator_subsystem, -0.1)
           ),
           new ParallelDeadlineGroup(
-            new StartShooterCommand(shooter_subsystem), 
+            new StartShooterCommand(shooter_subsystem, vision_subsystem), 
             new StartAcceleratorCommand(accelerator_subsystem, 1)
           ),
           new ParallelDeadlineGroup(
@@ -58,11 +60,14 @@ public class RobotContainer {
               new SpinSpindexerCommand(spindexer_subsystem),
               new WaitCommand(0.2)
             ),
-            new RunEndShooterCommand(shooter_subsystem),
+            new RunEndShooterCommand(shooter_subsystem, vision_subsystem),
             new RunEndAcceleratorCommand(accelerator_subsystem)
           )
         ),
-        new TurnToAngleVision(turret_subsystem, vision_subsystem)
+        new ParallelCommandGroup(
+          new TurnToAngleVision(turret_subsystem, vision_subsystem),
+          new HoodToVisionAngleCommand(hood_subsystem, vision_subsystem)
+        )
       )
     );
 

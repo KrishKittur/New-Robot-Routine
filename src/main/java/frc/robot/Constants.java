@@ -43,12 +43,12 @@ public final class Constants {
         public static int SHOOTER_ENCODER_CHANNEL_B = 1;
 
         // For Tuning
-        public static double SHOOTER_ENCODER_KP = 0.1;
-        public static double SHOOTER_ENCODER_KI = 0;
-        public static double SHOOTER_ENCODER_KD = 0.0001;
-        public static double SHOOTER_ENCODER_KS = 0.2;
-        public static double SHOOTER_ENCODER_KV = 0.025;
-        public static double SHOOTER_ENCODER_KA = 0.0037;
+        public static double SHOOTER_ENCODER_KP = 0.01;
+        public static double SHOOTER_ENCODER_KI = 0.0;
+        public static double SHOOTER_ENCODER_KD = 0.0;
+        public static double SHOOTER_ENCODER_KS = 0.5;
+        public static double SHOOTER_ENCODER_KV = 0.00246865202;
+        public static double SHOOTER_ENCODER_KA = 0.0;
 
         // Other important shooter constants
         public static double SHOOTER_ENCODER_DPR = 1.0/2048.0;
@@ -61,12 +61,13 @@ public final class Constants {
         public static int HOOD_ENCODER_ID = 3;
 
         // For tuning
-        public static double HOOD_ENCODER_KP = 0;
-        public static double HOOD_ENCODER_KI = 0;
-        public static double HOOD_ENCODER_KD = 0;
+        public static double HOOD_ENCODER_KP = 1.0;
+        public static double HOOD_ENCODER_KI = 0.0;
+        public static double HOOD_ENCODER_KD = 0.0;
 
         // Other important hood constants
-        public static int HOOD_ENCODER_DPR = 24/1;
+        public static double HOOD_ENCODER_DPR = 24.0/1.0;
+        public static double HOOD_CURRENT_THRESHOLD = 3.0;
 
     }
 

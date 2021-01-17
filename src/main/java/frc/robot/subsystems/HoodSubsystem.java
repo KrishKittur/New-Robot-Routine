@@ -15,8 +15,8 @@ public class HoodSubsystem extends SubsystemBase {
     
     // In the constructor set the setters
     public HoodSubsystem() {
-        hoodMotor.setSmartCurrentLimit(15);
-        hoodMotor.setSecondaryCurrentLimit(17);
+        hoodMotor.setSmartCurrentLimit(13);
+        hoodMotor.setSecondaryCurrentLimit(15);
         hoodEncoder.setDistancePerRotation(HOOD_ENCODER_DPR);
     }
 
