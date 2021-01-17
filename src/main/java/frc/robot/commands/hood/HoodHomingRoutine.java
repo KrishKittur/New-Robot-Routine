@@ -24,6 +24,7 @@ public class HoodHomingRoutine extends CommandBase {
     @Override
     public void initialize() {
         req_subsystem.setHoodMotor(-3);
+        System.out.println("start");
     }
 
     // In the execute method write the current data and time to a CSV file 
@@ -52,6 +53,7 @@ public class HoodHomingRoutine extends CommandBase {
     public void end(boolean interrupted) {
         req_subsystem.resetHoodEncoder();
         req_subsystem.setHoodMotor(0);
+        System.out.println("end");
     }
 
 

@@ -33,6 +33,7 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
+    /*
     // If the "A" button is pressed then run the routine
     new JoystickButton(controller, Button.kA.value).whenPressed(
       new ParallelDeadlineGroup(
@@ -59,6 +60,12 @@ public class RobotContainer {
           new HoodToAngle(hood_subsystem)
         )
       )
+    );
+    */
+
+    // If the B button is pressed then 0 the hood
+    new JoystickButton(controller, Button.kB.value).whenPressed(
+      new HoodHomingRoutine(hood_subsystem)
     );
 
   }

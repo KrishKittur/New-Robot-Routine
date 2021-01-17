@@ -17,9 +17,11 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
     SmartDashboard.putNumber("Shooter-Setpoint", 4000);
     SmartDashboard.putNumber("Hood-Setpoint", 0);
+    /*
     CommandScheduler.getInstance().schedule(
       new HoodHomingRoutine(m_robotContainer.hood_subsystem)
     );
+    */
   }
 
   @Override
