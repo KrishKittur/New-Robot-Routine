@@ -17,7 +17,7 @@ import edu.wpi.first.wpiutil.math.MathUtil;
 public class StartShooterCommand extends CommandBase {
     
     ShooterSubsystem req_subsystem;
-    double setPoint;
+    double shooterSetpoint;
     PIDController shooterPIDController = new PIDController(SHOOTER_ENCODER_KP, SHOOTER_ENCODER_KD, SHOOTER_ENCODER_KD);
     SimpleMotorFeedforward shooterFFController = new SimpleMotorFeedforward(SHOOTER_ENCODER_KS, SHOOTER_ENCODER_KV, SHOOTER_ENCODER_KA);
 
@@ -30,9 +30,9 @@ public class StartShooterCommand extends CommandBase {
     // In the execute method set the shooters motors according to the pid controllers calculations
     @Override
     public void execute() {
-        setPoint = SmartDashboard.getNumber("Shooter-Setpoint", 4000);
-        double outputPid = shooterPIDController.calculate(req_subsystem.readShooterEncoder(), setPoint);
-        double outputFF = shooterFFController.calculate(setPoint);
+        shooterSetpoint = SmartDashboard.getNumber("Shooter-Setpoint", 4000);
+        double outputPid = shooterPIDController.calculate(req_subsystem.readShooterEncoder(), shooterSetpoint);
+        double outputFF = shooterFFController.calculate(shooterSetpoint);
         double outputVoltage = MathUtil.clamp(outputPid + outputFF, -12, 12);
         req_subsystem.spinShooterBV(outputVoltage, outputVoltage);
     }

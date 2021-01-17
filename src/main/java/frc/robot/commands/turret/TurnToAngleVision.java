@@ -37,7 +37,6 @@ public class TurnToAngleVision extends CommandBase {
 
         double outputPID = turretController.calculate(req_subsystem.readTurretEncoder(), turretSetpoint);
         req_subsystem.setTurretMotor(MathUtil.clamp(outputPID, -5, 5));
-        System.out.println(outputPID + ", " + turretSetpoint);
     }
 
     // In the end method of this command set the turret motor to 0
