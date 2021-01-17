@@ -9,22 +9,12 @@ import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.commands.accelerator.RunEndAcceleratorCommand;
-import frc.robot.commands.accelerator.SpinAcceleratorCommand;
-import frc.robot.commands.accelerator.StartAcceleratorCommand;
-import frc.robot.commands.hood.HoodToVisionAngleCommand;
-import frc.robot.commands.shooter.RunEndShooterCommand;
-import frc.robot.commands.shooter.StartShooterCommand;
-import frc.robot.commands.spindexer.SpinSpindexerCommand;
-import frc.robot.commands.spindexer.TurnSpindexerCommand;
-import frc.robot.commands.turret.TurnToAngleVision;
-import frc.robot.subsystems.AcceleratorSubsystem;
-import frc.robot.subsystems.HoodSubsystem;
-import frc.robot.subsystems.ShooterSubsystem;
-import frc.robot.subsystems.SpindexerSubsystem;
-import frc.robot.subsystems.TurretSubsystem;
-import frc.robot.subsystems.VisionSubsystem;
-
+import frc.robot.commands.accelerator.*;
+import frc.robot.commands.hood.*;
+import frc.robot.commands.shooter.*;
+import frc.robot.commands.spindexer.*;
+import frc.robot.commands.turret.*;
+import frc.robot.subsystems.*;
 public class RobotContainer {
 
   // Instantiate the subsystems and controllers
@@ -52,7 +42,7 @@ public class RobotContainer {
               new SpinAcceleratorCommand(accelerator_subsystem, -0.1)
           ),
           new ParallelDeadlineGroup(
-            new StartShooterCommand(shooter_subsystem, vision_subsystem), 
+            new StartShooterCommand(shooter_subsystem), 
             new StartAcceleratorCommand(accelerator_subsystem, 1)
           ),
           new ParallelDeadlineGroup(
@@ -60,13 +50,13 @@ public class RobotContainer {
               new SpinSpindexerCommand(spindexer_subsystem),
               new WaitCommand(0.2)
             ),
-            new RunEndShooterCommand(shooter_subsystem, vision_subsystem),
+            new RunEndShooterCommand(shooter_subsystem),
             new RunEndAcceleratorCommand(accelerator_subsystem)
           )
         ),
         new ParallelCommandGroup(
           new TurnToAngleVision(turret_subsystem, vision_subsystem),
-          new HoodToVisionAngleCommand(hood_subsystem, vision_subsystem)
+          new HoodToAngle(hood_subsystem)
         )
       )
     );
