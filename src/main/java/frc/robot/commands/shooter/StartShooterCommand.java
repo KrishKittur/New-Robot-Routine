@@ -10,7 +10,6 @@ import static frc.robot.Constants.Shooter.*;
 import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Units;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpiutil.math.MathUtil;
@@ -18,7 +17,7 @@ import edu.wpi.first.wpiutil.math.MathUtil;
 public class StartShooterCommand extends CommandBase {
     
     ShooterSubsystem req_subsystem;
-    double setPoint = Units.rotationsPerMinuteToRadiansPerSecond(4000);
+    double setPoint = Units.rotationsPerMinuteToRadiansPerSecond(4250);
     PIDController shooterPIDController = new PIDController(SHOOTER_ENCODER_KP, SHOOTER_ENCODER_KD, SHOOTER_ENCODER_KD);
     SimpleMotorFeedforward shooterFFController = new SimpleMotorFeedforward(SHOOTER_ENCODER_KS, SHOOTER_ENCODER_KV, SHOOTER_ENCODER_KA);
 

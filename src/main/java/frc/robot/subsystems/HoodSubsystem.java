@@ -5,7 +5,6 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
 
 import edu.wpi.first.wpilibj.DutyCycleEncoder;
-import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 
@@ -19,7 +18,6 @@ public class HoodSubsystem extends SubsystemBase {
         // Set the setters
         hoodEncoder.setDistancePerRotation(HOOD_ENCODER_DPR);
         hoodMotor.setSmartCurrentLimit(5);
-        setDefaultCommand(new RunCommand(() -> setHoodMotor(0), this));
     }
 
     // Method to read the hood encoders values
