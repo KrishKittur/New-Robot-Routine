@@ -40,6 +40,11 @@ public class HoodSubsystem extends SubsystemBase {
         hoodMotor.setVoltage(-voltage);
     }
 
+    // Method to set the ramp rate
+    public void setRampRate(double rate) {
+        hoodMotor.setOpenLoopRampRate(rate);
+    }
+
     // In the periodic method show the current shooter speed
     @Override
     public void periodic() {

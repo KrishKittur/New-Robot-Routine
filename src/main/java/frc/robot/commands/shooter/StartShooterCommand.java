@@ -13,6 +13,7 @@ import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpiutil.math.MathUtil;
 
@@ -37,6 +38,7 @@ public class StartShooterCommand extends CommandBase {
     public void execute() {
         double distance = vision_subsystem.getDistance();
         setPoint = InterpolationClass.getRPMFromDistance(distance);
+        SmartDashboard.putNumber("Shooter Setpoint", setPoint);
         double outputPid = shooterPIDController.calculate(req_subsystem.readShooterEncoder(), setPoint);
         double outputFF = shooterFFController.calculate(setPoint);
         double outputVoltage = MathUtil.clamp(outputPid + outputFF, -12, 12);

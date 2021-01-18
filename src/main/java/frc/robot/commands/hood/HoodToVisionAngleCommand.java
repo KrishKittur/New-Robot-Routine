@@ -2,6 +2,7 @@ package frc.robot.commands.hood;
 
 import static frc.robot.Constants.Hood.*;
 import edu.wpi.first.wpilibj.controller.PIDController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpiutil.math.MathUtil;
 import frc.robot.interpolation.InterpolationClass;
@@ -28,7 +29,8 @@ public class HoodToVisionAngleCommand extends CommandBase {
     @Override
     public void execute() {
         double distance = vision_subsystem.getDistance();
-        hoodSetpoint = InterpolationClass.getHoodAngleFromDistance(distance);
+        hoodSetpoint = MathUtil.clamp(InterpolationClass.getHoodAngleFromDistance(distance), 0, 62);
+        SmartDashboard.putNumber("Hood Setpoint", hoodSetpoint);
         double outputPID = hoodPID.calculate(req_subsystem.getHoodDistance(), hoodSetpoint);
         req_subsystem.setHoodMotor(MathUtil.clamp(outputPID, -5, 5));
     }

@@ -10,15 +10,9 @@ public final class InterpolationClass {
     // Create the treemap 
     private final static TreeMap<Double, InterpolatableValue> valueMap = new TreeMap<>(
         Map.ofEntries(
-            entry(0.0, new InterpolatableValue(1000, 0.0)),
-            entry(1.0, new InterpolatableValue(1250, 7.5)),
-            entry(2.0, new InterpolatableValue(1500, 15.0)),
-            entry(3.0, new InterpolatableValue(1750, 22.5)),
-            entry(4.0, new InterpolatableValue(2000, 30.0)),
-            entry(5.0, new InterpolatableValue(2250, 37.5)),
-            entry(6.0, new InterpolatableValue(2500, 45.0)),
-            entry(7.0, new InterpolatableValue(2750, 52.5)),
-            entry(8.0, new InterpolatableValue(3000, 60.0))
+            entry(1.5, new InterpolatableValue(2500, 40)),
+            entry(2.0, new InterpolatableValue(3200, 60)),
+            entry(3.0, new InterpolatableValue(3400, 60))
         )
     );
 
@@ -30,10 +24,10 @@ public final class InterpolationClass {
     // Method to get rpm when given distance
     public static double getRPMFromDistance(double distance) {
         if (valueMap.ceilingKey(distance) == null) {
-            return valueMap.get(10.0).getRPM();
+            return valueMap.get(3.0).getRPM();
         }
         if (valueMap.floorKey(distance) == null) {
-            return valueMap.get(0.0).getRPM();
+            return valueMap.get(1.5).getRPM();
         }
         double floorKey = valueMap.floorKey(distance);
         double ceilingKey = valueMap.ceilingKey(distance);
@@ -48,10 +42,10 @@ public final class InterpolationClass {
     // Method to get hood angle when given distance
     public static double getHoodAngleFromDistance(double distance) {
         if (valueMap.ceilingKey(distance) == null) {
-            return valueMap.get(10.0).getHoodAngle();
+            return valueMap.get(3.0).getHoodAngle();
         }
         if (valueMap.floorKey(distance) == null) {
-            return valueMap.get(0.0).getHoodAngle();
+            return valueMap.get(1.5).getHoodAngle();
         }
         double floorKey = valueMap.floorKey(distance);
         double ceilingKey = valueMap.ceilingKey(distance);

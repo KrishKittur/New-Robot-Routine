@@ -1,6 +1,6 @@
 package frc.robot.commands.turret;
 
-import static frc.robot.Constants.Hood.*;
+import static frc.robot.Constants.Turret.*;
 import edu.wpi.first.wpilibj.MedianFilter;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -11,7 +11,7 @@ import frc.robot.subsystems.VisionSubsystem;
 public class TurnToAngleVision extends CommandBase {
     
     // Initialize the subsystems, controllers, and the controllers values
-    PIDController turretController = new PIDController(HOOD_ENCODER_KP, HOOD_ENCODER_KI, HOOD_ENCODER_KD);
+    PIDController turretController = new PIDController(TURRET_ENCODER_KP, TURRET_ENCODER_KI, TURRET_ENCODER_KD);
     TurretSubsystem req_subsystem;
     VisionSubsystem vision_subsystem;
     double turretSetpoint;

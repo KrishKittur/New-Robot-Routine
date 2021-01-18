@@ -14,9 +14,6 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_robotContainer = new RobotContainer();
-    CommandScheduler.getInstance().schedule(
-      new HoodHomingRoutine(m_robotContainer.hood_subsystem)
-    );
   }
 
   @Override
@@ -43,7 +40,10 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    // Add auto disble here
+    // Add auto disable here
+    CommandScheduler.getInstance().schedule(
+      new HoodHomingRoutine(m_robotContainer.hood_subsystem)
+    );
   }
 
   @Override
