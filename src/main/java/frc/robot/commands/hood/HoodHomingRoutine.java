@@ -20,7 +20,6 @@ public class HoodHomingRoutine extends CommandBase {
     @Override
     public void initialize() {
         req_subsystem.setHoodMotor(-3);
-        req_subsystem.setRampRate(5);
         System.out.println(req_subsystem.getCurrent());
     }
 
