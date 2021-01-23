@@ -32,6 +32,15 @@ public final class Constants {
     public static class Accelerator {
         // Motors, Ports, and Channels
         public static int ACCELERATOR_MOTOR_ID = 21;
+
+        // For Tuning
+        public static double ACCELERATOR_ENCODER_KP = 0.1;
+        public static double ACCELERATOR_ENCODER_KI = 0.0;
+        public static double ACCELERATOR_ENCODER_KD = 0.0;
+        public static double ACCELERATOR_ENCODER_KS = 0.3;
+        public static double ACCELERATOR_ENCODER_KV = 0.00211416;
+        public static double ACCELERATOR_ENCODER_KA = 0.0;
+        public static double ACCELERATOR_SETPOINT = 4500;
     }
 
     // All constants having to do with the shooter go here
@@ -78,9 +87,9 @@ public final class Constants {
         public static int TURRET_ENCODER_ID = 4;
 
         // For tuning
-        public static double TURRET_ENCODER_KP = 0.1;
+        public static double TURRET_ENCODER_KP = 0.025;
         public static double TURRET_ENCODER_KI = 0.0;
-        public static double TURRET_ENCODER_KD = 0.0001;
+        public static double TURRET_ENCODER_KD = 0.001;
 
         // Other important turret constants
         public static double TURRET_ENCODER_DPR = 360.0/1.0;

@@ -18,7 +18,7 @@ public class VisionSubsystem extends SubsystemBase {
     public double getYaw() {
         PhotonPipelineResult result = camera.getLatestResult();
         if (result.hasTargets()) {
-            return -(result.getBestTarget().getYaw() + 1);
+            return -(result.getBestTarget().getYaw() + 2.5);
         } else {
             return 0.0;
         }

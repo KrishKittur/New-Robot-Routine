@@ -1,7 +1,6 @@
 package frc.robot.commands.hood;
 
-import static frc.robot.Constants.Hood.*;
-
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.HoodSubsystem;
 
@@ -9,6 +8,7 @@ public class HoodHomingRoutine extends CommandBase {
 
     // Insantiate the global variables
     HoodSubsystem req_subsystem;
+    double time;
 
     public HoodHomingRoutine(HoodSubsystem subsystem) {
         // Establish the command requirements
@@ -20,13 +20,13 @@ public class HoodHomingRoutine extends CommandBase {
     @Override
     public void initialize() {
         req_subsystem.setHoodMotor(-3);
-        System.out.println(req_subsystem.getCurrent());
+        time = RobotController.getFPGATime() * 1.0/1000000.0;
     }
 
     // If the current is greater than the current threshold than end the command
     @Override
     public boolean isFinished() {
-        return req_subsystem.getCurrent() > HOOD_CURRENT_THRESHOLD;
+        return req_subsystem.getHoodVelocity() < 0.1 && RobotController.getFPGATime() * 1.0/1000000.0 >= time + 0.25;
     }
 
     // In the end method turn off the motor
@@ -34,8 +34,6 @@ public class HoodHomingRoutine extends CommandBase {
     public void end(boolean interrupted) {
         req_subsystem.resetHoodEncoder();
         req_subsystem.setHoodMotor(0);
-        req_subsystem.setRampRate(0);
-        System.out.println(req_subsystem.getCurrent());
     }
 
 

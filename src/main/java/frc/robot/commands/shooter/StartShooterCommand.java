@@ -7,10 +7,15 @@
 package frc.robot.commands.shooter;
 
 import static frc.robot.Constants.Shooter.*;
+import static frc.robot.Constants.Accelerator.*;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import frc.robot.interpolation.InterpolationClass;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
+import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -43,12 +48,13 @@ public class StartShooterCommand extends CommandBase {
         double outputFF = shooterFFController.calculate(setPoint);
         double outputVoltage = MathUtil.clamp(outputPid + outputFF, -12, 12);
         req_subsystem.spinShooterBV(outputVoltage, outputVoltage);
-    }
-     
-    // If the shooter has reached its setpoint then set isFinished to true
-    @Override
-    public boolean isFinished() {
-        return shooterPIDController.atSetpoint();
+        try {
+            FileWriter shooterWriter = new FileWriter(Filesystem.getOperatingDirectory() + "/shooteracceleratordata.csv", true);
+            shooterWriter.write(req_subsystem.readShooterEncoder() + ", " + setPoint + ", " + 0 + ", " + ACCELERATOR_SETPOINT + ", " + RobotController.getFPGATime() * 1.0/1000000.0 + "\n");
+            shooterWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

@@ -2,9 +2,14 @@ package frc.robot.commands.shooter;
 
 import static frc.robot.Constants.Shooter.*;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 import frc.robot.interpolation.InterpolationClass;
 import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.VisionSubsystem;
+import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -37,6 +42,13 @@ public class RunEndShooterCommand extends CommandBase {
         double outputFF = shooterFFController.calculate(setPoint);
         double outputVoltage = MathUtil.clamp(outputPid + outputFF, -12, 12);
         req_subsystem.spinShooterBV(outputVoltage, outputVoltage);
+        try {
+            FileWriter shooterWriter = new FileWriter(Filesystem.getOperatingDirectory() + "/shooterdata.csv", true);
+            shooterWriter.write(req_subsystem.readShooterEncoder() + ", " + RobotController.getFPGATime() * 1.0/1000000.0 + "," + setPoint + "\n");
+            shooterWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
      
     // If this command ends then turn the shooter off

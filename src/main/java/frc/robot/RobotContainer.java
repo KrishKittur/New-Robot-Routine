@@ -17,6 +17,8 @@ import frc.robot.commands.shooter.RunEndShooterCommand;
 import frc.robot.commands.shooter.StartShooterCommand;
 import frc.robot.commands.spindexer.SpinSpindexerCommand;
 import frc.robot.commands.spindexer.TurnSpindexerCommand;
+import frc.robot.commands.multisubs.RunEndAcceleratorShooterCommand;
+import frc.robot.commands.multisubs.StartAcceleratorShooterCommand;
 import frc.robot.commands.turret.TurnToAngleVision;
 import frc.robot.subsystems.AcceleratorSubsystem;
 import frc.robot.subsystems.HoodSubsystem;
@@ -49,19 +51,20 @@ public class RobotContainer {
         new SequentialCommandGroup(
           new ParallelDeadlineGroup(
               new TurnSpindexerCommand(spindexer_subsystem),
-              new SpinAcceleratorCommand(accelerator_subsystem, -0.1)
+              new SpinAcceleratorCommand(accelerator_subsystem, -0.1),
+              new StartShooterCommand(shooter_subsystem, vision_subsystem)
           ),
-          new ParallelDeadlineGroup(
-            new StartShooterCommand(shooter_subsystem, vision_subsystem), 
-            new StartAcceleratorCommand(accelerator_subsystem, 1)
+          new StartAcceleratorShooterCommand(
+            accelerator_subsystem, shooter_subsystem, vision_subsystem
           ),
           new ParallelDeadlineGroup(
             new SequentialCommandGroup(
               new SpinSpindexerCommand(spindexer_subsystem),
               new WaitCommand(0.2)
             ),
-            new RunEndShooterCommand(shooter_subsystem, vision_subsystem),
-            new RunEndAcceleratorCommand(accelerator_subsystem)
+            new RunEndAcceleratorShooterCommand(
+              accelerator_subsystem, shooter_subsystem, vision_subsystem
+            )
           )
         ),
         new ParallelCommandGroup(
